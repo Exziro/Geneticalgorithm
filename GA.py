@@ -15,7 +15,7 @@ def specise_origin(population_size, chrome_length):
 
 #encode
 def translation(population,chrome_length):
-    temporary[]
+    temporary = []
     for i in range(len(population)):
         total = 0
         for j in range(chrome_length):
