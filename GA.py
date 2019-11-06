@@ -13,7 +13,7 @@ def specise_origin(population_size, chrome_length):
         #save the chrom in the species
     return population[1:]
 
-#encode
+#code encode
 def translation(population,chrome_length):
     temporary = []
     for i in range(len(population)):
@@ -97,3 +97,37 @@ def selection(population, fitness1):
             fitin += 1 
     population = new_pop
 
+#crossover 
+def crossover(population, pc):#pc can chosed the single point crossing or multi-point cross
+    pop_len = len(population)
+    #population lenth
+    for i in range(pop_len - 1):
+        cpoint = random.randint(0, len(population[0]))
+        #get the random point
+        temporary1 = []
+        temporary2 = []
+        #save separetely chrom
+        temporary1.extend(pop[i][0,cpoint])
+        temporary1.extend(pop[i+1][cpoint:len(population[i])])
+        #save the i th chrom 0~cpoint gene 
+        #and then save the i+1 th chrom cpoint to the i gene add the temporary2 after
+        temporary2.extend(pop[i][0,cpoint])
+        temporary2.extend(pop[i][cpoint:len(pop[i])])
+        #using the t
+        pop[i] = temporary1
+        pop[i+1] = temporary2 
+
+#mutation
+def mutation(population,pm):#pm is mutation point
+    px = len(population)
+    py = len(population[0])
+
+    for i in range(px):
+        if(random.random()<pm):
+            mpoint = random.randint(0, py-1)
+            if (population[i][mpoint] == 1):
+                population[i][mpoint] = 0
+            else:
+                population[i][mpoint] = 1
+
+    
