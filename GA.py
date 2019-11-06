@@ -71,7 +71,7 @@ def cumsum(fitness1):
 
 #chose the fit individual
 def selection(population, fitness1):
-    pop = [] # this is a bug 原文中没有该参数，猜测是调用
+    #pop = [] # this is a bug 原文中没有该参数，猜测是调用
     new_fitness = []
     total_fitness = sum(fitness1)
     for i in range(len(fitness1)):
@@ -91,7 +91,7 @@ def selection(population, fitness1):
     #roulette algorithm
     while newin < pop_len:
         if(ms[newin] < new_fitness[fitin]):
-            new_pop[newin] = pop[fitin]
+            new_pop[newin] = population[fitin]
             newin += 1
         else:
             fitin += 1 
@@ -107,15 +107,15 @@ def crossover(population, pc):#pc can chosed the single point crossing or multi-
         temporary1 = []
         temporary2 = []
         #save separetely chrom
-        temporary1.extend(pop[i][0,cpoint])
-        temporary1.extend(pop[i+1][cpoint:len(population[i])])
+        temporary1.extend(population[i][0,cpoint])
+        temporary1.extend(population[i+1][cpoint:len(population[i])])
         #save the i th chrom 0~cpoint gene 
         #and then save the i+1 th chrom cpoint to the i gene add the temporary2 after
-        temporary2.extend(pop[i][0,cpoint])
-        temporary2.extend(pop[i][cpoint:len(pop[i])])
+        temporary2.extend(population[i][0,cpoint])
+        temporary2.extend(population[i][cpoint:len(population[i])])
         #using the t
-        pop[i] = temporary1
-        pop[i+1] = temporary2 
+        population[i] = temporary1
+        population[i+1] = temporary2 
 
 #mutation
 def mutation(population,pm):#pm is mutation point
