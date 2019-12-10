@@ -13,22 +13,24 @@ plt.xticks([])
 plt.yticks([])
 plt.show()
 '''
-def random_martex_genetor(vex_num = 0):
+'''def random_martex_genetor(vex_num = 0):
     data_martex = []
     for i in range (vex_num):
         one_list = []
         for i in range(vex_num):
-            one_list.append(random.randint(0, 1))
+            one_list.append(random.randint(0, 10))
         data_martex.append(one_list)
     return data_martex
 G = nx.Graph()
 test = random_martex_genetor(10)
+print(test)
 for i in range (len(test)):
     for j in range(len(test)):
         if(test[i][j] != 0):
             G.add_edge(i, j)
 nx.draw(G)
 plt.show()
+
 #print("xxx",test)
 #G = nx.dodecahedral_graph()
 #nx.draw_shell(G, nlist = test)
@@ -38,3 +40,14 @@ plt.show()
 #H = nx.path_graph(10)
 #nx.draw(G, with_labels=True)
 #plt.show()
+
+'''
+def random_in(ver = 10):
+    initial = []
+    i = 0
+    for i in range(ver):
+        i += 1
+        initial.append(i)
+    random.shuffle(initial)
+    print(initial)
+a = random_in(10)
